@@ -29,9 +29,7 @@ public class Kata1
     public static void main(String[] args)
     {
 
-        List<Map> test = execute();
-
-        System.out.println(test);
+        System.out.println(execute());
 
     }
 }
