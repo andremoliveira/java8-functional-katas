@@ -59,10 +59,7 @@ import util.DataUtil;
 */
 public class Kata11
 {
-    @SuppressWarnings(
-    {
-            "unused", "rawtypes"
-    })
+    @SuppressWarnings("rawtypes")
     public static List<Map> execute()
     {
         List<Map> lists = DataUtil.getLists();

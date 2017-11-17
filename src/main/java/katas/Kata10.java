@@ -53,7 +53,7 @@ public class Kata10
 {
     @SuppressWarnings(
     {
-            "unused", "rawtypes"
+            "rawtypes"
     })
     public static List<Map> execute()
     {

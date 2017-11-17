@@ -18,6 +18,7 @@ import util.DataUtil;
 */
 public class Kata7
 {
+    @SuppressWarnings("rawtypes")
     public static List<Map> execute()
     {
         List<MovieList> movieLists = DataUtil.getMovieLists();
@@ -40,7 +41,6 @@ public class Kata7
 
     }
 
-    @SuppressWarnings("rawtypes")
     public static void main(String[] args)
     {
 

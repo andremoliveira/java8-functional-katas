@@ -24,7 +24,6 @@ public class Kata6
 
     }
 
-    @SuppressWarnings("rawtypes")
     public static void main(String[] args)
     {
 

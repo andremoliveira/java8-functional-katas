@@ -19,6 +19,7 @@ import util.DataUtil;
 */
 public class Kata9
 {
+    @SuppressWarnings("rawtypes")
     public static List<Map> execute()
     {
         List<MovieList> movieLists = DataUtil.getMovieLists();
