@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import com.google.common.collect.ImmutableMap;
 
 import model.BoxArt;
-import model.Movie;
 import model.MovieList;
 import util.DataUtil;
 
@@ -23,9 +22,7 @@ public class Kata7
     {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
-        List<Movie> movies = movieLists.stream().map(t -> t.getVideos()).flatMap(t -> t.stream()).collect(Collectors.toList());
-
-        return movies.stream().map(t -> {
+        return movieLists.stream().map(t -> t.getVideos()).flatMap(t -> t.stream()).map(t -> {
 
             BoxArt smallestBox = t.getBoxarts().stream().reduce((box1, box2) -> {
 
