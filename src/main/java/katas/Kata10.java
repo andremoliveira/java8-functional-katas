@@ -64,8 +64,8 @@ public class Kata10
 
             Integer listId = (Integer) list.get("id");
 
-            List<Map> finalResult = videos.stream().filter(t -> t.get("listId").equals(listId))
-                    .map(m -> ImmutableMap.of("id", m.get("id"), "title", m.get("title"))).collect(Collectors.toList());
+            List<Map> finalResult = videos.stream().filter(video -> video.get("listId").equals(listId))
+                    .map(movie -> ImmutableMap.of("id", movie.get("id"), "title", movie.get("title"))).collect(Collectors.toList());
 
             return ImmutableMap.of("Name", list.get("name"), "videos", finalResult);
 

@@ -71,17 +71,17 @@ public class Kata11
 
             Integer listId = (Integer) list.get("id");
 
-            List<Map> videosDataStructure = videos.stream().filter(t -> t.get("listId").equals(listId)).collect(Collectors.toList());
+            List<Map> videosDataStructure = videos.stream().filter(video -> video.get("listId").equals(listId)).collect(Collectors.toList());
 
-            List<Map> finalResult = videosDataStructure.stream().map(v -> {
+            List<Map> finalResult = videosDataStructure.stream().map(videoDataStructure -> {
 
-                Integer videoId = (Integer) v.get("id");
+                Integer videoId = (Integer) videoDataStructure.get("id");
 
-                Map boxArt = boxArts.stream().filter(b -> b.get("videoId").equals(videoId)).findFirst().get();
+                Map boxArt = boxArts.stream().filter(box -> box.get("videoId").equals(videoId)).findFirst().get();
 
                 Map bookmark = bookmarkList.stream().filter(bml -> bml.get("videoId").equals(videoId)).findFirst().get();
 
-                return ImmutableMap.of("id", v.get("id"), "title", v.get("title"), "time", bookmark.get("time"), "boxart", boxArt.get("url"));
+                return ImmutableMap.of("id", videoDataStructure.get("id"), "title", videoDataStructure.get("title"), "time", bookmark.get("time"), "boxart", boxArt.get("url"));
 
             }).collect(Collectors.toList());
 

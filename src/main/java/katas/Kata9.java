@@ -24,11 +24,11 @@ public class Kata9
     {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
-        List<Movie> movies = movieLists.stream().flatMap(t -> t.getVideos().stream()).collect(Collectors.toList());
+        List<Movie> movies = movieLists.stream().flatMap(video -> video.getVideos().stream()).collect(Collectors.toList());
 
-        return movies.stream().map(t -> {
+        return movies.stream().map(movie -> {
 
-            BoxArt smallestBox = t.getBoxarts().stream().reduce((box1, box2) -> {
+            BoxArt smallestBox = movie.getBoxarts().stream().reduce((box1, box2) -> {
 
                 Integer sizeBox1 = box1.getHeight().intValue() * box1.getWidth().intValue();
                 Integer sizeBox2 = box2.getHeight().intValue() * box2.getWidth().intValue();
@@ -36,9 +36,9 @@ public class Kata9
                 return sizeBox1 < sizeBox2 ? box1 : box2;
             }).get();
 
-            InterestingMoment im = t.getInterestingMoments().stream().filter(moment -> moment.getType().equals("Middle")).findFirst().get();
+            InterestingMoment im = movie.getInterestingMoments().stream().filter(moment -> moment.getType().equals("Middle")).findFirst().get();
 
-            return ImmutableMap.of("id", t.getId(), "title", t.getTitle(), "time", im.getTime(), "boxart", smallestBox.getUrl());
+            return ImmutableMap.of("id", movie.getId(), "title", movie.getTitle(), "time", im.getTime(), "boxart", smallestBox.getUrl());
 
         }).collect(Collectors.toList());
 

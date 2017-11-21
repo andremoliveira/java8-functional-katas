@@ -22,9 +22,9 @@ public class Kata7
     {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
-        return movieLists.stream().map(t -> t.getVideos()).flatMap(t -> t.stream()).map(t -> {
+        return movieLists.stream().map(video -> video.getVideos()).flatMap(boxArt -> boxArt.stream()).map(result -> {
 
-            BoxArt smallestBox = t.getBoxarts().stream().reduce((box1, box2) -> {
+            BoxArt smallestBox = result.getBoxarts().stream().reduce((box1, box2) -> {
 
                 Integer sizeBox1 = box1.getHeight().intValue() * box1.getWidth().intValue();
                 Integer sizeBox2 = box2.getHeight().intValue() * box2.getWidth().intValue();
@@ -32,7 +32,7 @@ public class Kata7
                 return sizeBox1 < sizeBox2 ? box1 : box2;
             }).get();
 
-            return ImmutableMap.of("id", t.getId(), "title", t.getTitle(), "boxart", smallestBox.getUrl());
+            return ImmutableMap.of("id", result.getId(), "title", result.getTitle(), "boxart", smallestBox.getUrl());
 
         }).collect(Collectors.toList());
 

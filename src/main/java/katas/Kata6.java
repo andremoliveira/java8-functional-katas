@@ -16,7 +16,7 @@ public class Kata6
     {
         List<Movie> movies = DataUtil.getMovies();
 
-        return movies.stream().map(movie -> movie.getBoxarts()).flatMap(t -> t.stream()).reduce((box1, box2) -> {
+        return movies.stream().map(movie -> movie.getBoxarts()).flatMap(boxArt -> boxArt.stream()).reduce((box1, box2) -> {
             Integer sizeBox1 = box1.getWidth().intValue() * box1.getHeight().intValue();
             Integer sizeBox2 = box2.getWidth().intValue() * box2.getHeight().intValue();
             return sizeBox1 > sizeBox2 ? box1 : box2;

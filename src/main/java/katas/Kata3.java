@@ -3,6 +3,7 @@ package katas;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import model.Movie;
 import model.MovieList;
 import util.DataUtil;
 
@@ -17,7 +18,7 @@ public class Kata3
     {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
-        return movieLists.stream().flatMap(t -> t.getVideos().stream().map(m -> m.getId())).collect(Collectors.toList());
+        return movieLists.stream().flatMap(video -> video.getVideos().stream()).map(Movie::getId).collect(Collectors.toList());
     }
 
     public static void main(String[] args)

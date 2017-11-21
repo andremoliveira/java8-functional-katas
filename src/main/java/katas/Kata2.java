@@ -13,11 +13,14 @@ import util.DataUtil;
 */
 public class Kata2
 {
+
+    private static Double RATING = 5.0;
+
     public static List<Integer> execute()
     {
         List<Movie> movies = DataUtil.getMovies();
 
-        return movies.stream().filter(movie -> movie.getRating().equals(5.0)).map(movie -> movie.getId()).collect(Collectors.toList());
+        return movies.stream().filter(movie -> RATING.equals(movie.getRating())).map(Movie::getId).collect(Collectors.toList());
     }
 
     public static void main(String[] args)
